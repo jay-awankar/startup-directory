@@ -1,8 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://youtu.be/Zq5fmkH0T78?feature=shared" target="_blank">
-      <img src="https://github.com/user-attachments/assets/471e2baa-8781-43b8-aaed-62e313d03e99" alt="Project Banner">
-    </a>
+    <img src="https://github.com/user-attachments/assets/471e2baa-8781-43b8-aaed-62e313d03e99" alt="Project Banner">
   <br />
 
   <div>
@@ -16,7 +14,7 @@
 <h3 align="center">Startup Directory Platform</h3>
 
    <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
+     This project is built in <b>Next.js</b> using <b>TailwindCSS</b> and <b>Sanity</b>.
     </div>
 </div>
 
@@ -26,9 +24,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets (Code to Copy)](#snippets)
-6. 🔗 [Assets](#links)
-7. 🚀 [More](#more)
+5. 🚀 [Code Flow](#code-flow)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -114,10 +110,10 @@ npx auth secret
 
 **Setup Next Auth** [Visit](https://authjs.dev/getting-started/installation)
 
-create auth.ts in root directory
-import nextauth and specify provider (GitHub)
-mkdir in app as >> api >> auth >> [...nextauth]
-Authentication >> OAuth >> GitHub >> Developer Setting >> new oauth app
+create auth.ts in root directory <br />
+import nextauth and specify provider (GitHub) <br />
+mkdir in app as >> api >> auth >> [...nextauth] <br />
+authentication >> OAuth >> GitHub >> Developer Setting >> New OAuth App
 ```env
 AUTH_SECRET= 
 AUTH_GITHUB_ID=
@@ -131,29 +127,38 @@ npm i @tailwindcss/typography
 ```
 
 **Add Global Css**
+```bash
+@layer utilities 
+    {
+    .class-name 
+        {
+        @apply styles
+    }
+}
+```
 
 **ShadCN**
 ```bash
 npx shadcn@latest init
 ```
+add components as required
 
 **Setup Sanity** [Visit](https://www.sanity.io/)
 ```bash
 npm create sanity@latest -- --project "key" --dataset production --template clean
 npm i next-sanity@canary
 ```
-remove --turbo from dev (SCRIPT)
+remove --turbo from dev (SCRIPT) <br />
 sanity schema
 
 **Set Up Environment Variables**
 
-Create a new file named `.env.local` in the root of your project and add the following content:
+create a new file named `.env.local` in the root of your project and add the following content:
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=
 NEXT_PUBLIC_SANITY_API_VERSION='vX'
-SANITY_TOKEN=
 
 AUTH_SECRET= 
 AUTH_GITHUB_ID=
@@ -166,11 +171,32 @@ npx sanity@latest schema extract --path=./sanity/extract.json
 npx sanity@latest typegen generate
 ```
 
-**Update SCRIPT**
-"predev": "npm run typegen",
+**Update SCRIPT** (package.json)
+``bash
+"predev": "npm run typegen", 
 "prebuild": "npm run typegen",
 "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
+```
 ```bash
 npm run typegen
 ```
 
+**Sanity Write Token**
+
+create api token in sanity in your project
+update env file:
+```env
+SANITY_WRITE_TOKEN=
+```
+
+**Other Installatons**
+
+```bash
+npm i @types/markdown-it
+
+npm i @uiw/react-md-editor
+
+npm i slugify
+```
+
+Slugify - to transform a string into web url
